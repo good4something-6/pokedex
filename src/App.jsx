@@ -17,12 +17,28 @@ function App() {
     makeAPIcall();
   }, []);
 
+  useEffect(() => {
+    if (pokemon.length === 151) {
+      console.log(pokemon);
+    }
+  }, [pokemon]);
+
   return (
     <div className="App">
-      {pokemon.map((pokemon) => {
+      {pokemon.map((pokemonEle) => {
         return (
           <div className="container">
-            <h1>{pokemon.name}</h1>
+            <h1>{pokemonEle.name}</h1>
+            <img
+              src={pokemonEle.sprites.front_default}
+              alt={pokemonEle.name}
+            ></img>
+            <div>
+              <h3>Types</h3>
+              {pokemonEle.types.map((ele) => {
+                return <h3>{ele.type.name}</h3>;
+              })}
+            </div>
           </div>
         );
       })}
