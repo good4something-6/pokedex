@@ -61,11 +61,21 @@ function App() {
     console.log(pokemonData);
     return (
       <div>
-        <h1 className="title">{pokemonData.name}</h1>
-        <div>
-          <h3 className="link">Types</h3>
+        <h1 className="title pokeTitle">{pokemonData.name}</h1>
+        <div className="container">
+          <h1>Pokemon Stats:</h1>
+          {pokemonData.stats.map((s) => (
+            <h3>
+              {s.stat.name} = {s.base_stat}
+            </h3>
+          ))}
+        </div>
+        <div className="container">
+          <h2>height: {pokemonData.height}</h2>
+          <h2>weight: {pokemonData.weight}</h2>
+          <h2 className="link">Types</h2>
           {pokemonData.types.map((ele) => {
-            return <h3 className="link">{ele.type.name}</h3>;
+            return <h2 className="link">{ele.type.name}</h2>;
           })}
         </div>
       </div>
