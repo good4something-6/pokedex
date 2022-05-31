@@ -62,6 +62,12 @@ function App() {
     return (
       <div>
         <h1 className="title">{pokemonData.name}</h1>
+        <div>
+          <h3 className="link">Types</h3>
+          {pokemonData.types.map((ele) => {
+            return <h3 className="link">{ele.type.name}</h3>;
+          })}
+        </div>
       </div>
     );
   }
