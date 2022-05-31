@@ -43,8 +43,10 @@ function App() {
                   <div>
                     <h3 className="link">Types</h3>
                     {pokemonEle.types.map((ele) => {
-                      return <h3 className="link">{ele.type.name}</h3>;
+                      return <h3 className="link">{ele.type.name}</h3>
+
                     })}
+                    
                   </div>
                 </div>
               </Link>
@@ -62,6 +64,8 @@ function App() {
     return (
       <div>
         <h1 className="title">{pokemonData.name}</h1>
+        <h2>height: {pokemonData.height}</h2>
+        <h2>weight: {pokemonData.weight}</h2>
       </div>
     );
   }
