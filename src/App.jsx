@@ -1,6 +1,7 @@
 import "./App.css";
 import { useEffect, useState } from "react";
 import Pokedex from "pokedex-promise-v2";
+import { Link, Route, useLocation } from "react-router-dom";
 
 function App() {
   const P = new Pokedex({ timeout: 1800 * 1000 });
@@ -17,17 +18,29 @@ function App() {
     makeAPIcall();
   }, []);
 
-  return (
-    <div className="App">
-      {pokemon.map((pokemon) => {
-        return (
-          <div className="container">
-            <h1>{pokemon.name}</h1>
-          </div>
-        );
-      })}
-    </div>
-  );
+  const location = useLocation();
+
+  if (location.pathname === "/") {
+    return (
+      <div className="App">
+        {pokemon.map((pokemon) => {
+          return (
+            <Link className="link" to={`/${pokemon.name}`}>
+              <div className="container">
+                <h1 className="link">{pokemon.name}</h1>
+              </div>
+            </Link>
+          );
+        })}
+      </div>
+    );
+  } else {
+    return (
+      <div>
+        <h1 className="title">{location.pathname.slice(1)}</h1>
+      </div>
+    );
+  }
 }
 
 export default App;
