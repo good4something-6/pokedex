@@ -70,6 +70,10 @@ function App() {
             </h3>
           ))}
         </div>
+        <div className="container">
+          <h2>height: {pokemonData.height}</h2>
+          <h2>weight: {pokemonData.weight}</h2>
+        </div>
       </div>
     );
   }
