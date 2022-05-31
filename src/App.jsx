@@ -13,15 +13,9 @@ function App() {
     }
   };
 
-  useEffect(async () => {
-    await makeAPIcall();
-  }, []);
-
   useEffect(() => {
-    console.log("all", pokemon);
-  }, [pokemon]);
-
-  // console.log("set of pokemon", pokemon);
+    makeAPIcall();
+  }, []);
 
   return (
     <div className="App">
