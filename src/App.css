@@ -23,3 +23,8 @@
   text-decoration: none;
   color: #000;
 }
+
+.pokeTitle {
+  text-align: center;
+  font-size: 3em;
+}
