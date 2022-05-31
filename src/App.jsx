@@ -1,7 +1,8 @@
 import "./App.css";
 import { useEffect, useState } from "react";
 import Pokedex from "pokedex-promise-v2";
-import { Link, Route, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import Tilt from "react-parallax-tilt";
 
 function App() {
   const P = new Pokedex({ timeout: 1800 * 1000 });
@@ -24,28 +25,6 @@ function App() {
     }
   }, [pokemon]);
 
-  // return (
-  //   <div className="App">
-  //     {pokemon.map((pokemonEle) => {
-  //       return (
-  //         <div className="container">
-  //           <h1>{pokemonEle.name}</h1>
-  //           <img
-  //             src={pokemonEle.sprites.front_default}
-  //             alt={pokemonEle.name}
-  //           ></img>
-  //           <div>
-  //             <h3>Types</h3>
-  //             {pokemonEle.types.map((ele) => {
-  //               return <h3>{ele.type.name}</h3>;
-  //             })}
-  //           </div>
-  //         </div>
-  //       );
-  //     })}
-  //   </div>
-  // );
-
   const location = useLocation();
 
   if (location.pathname === "/") {
@@ -53,21 +32,23 @@ function App() {
       <div className="App">
         {pokemon.map((pokemonEle) => {
           return (
-            <Link to={`/${pokemonEle.name}`}>
-              <div className="container">
-                <h1>{pokemonEle.name}</h1>
-                <img
-                  src={pokemonEle.sprites.front_default}
-                  alt={pokemonEle.name}
-                ></img>
-                <div>
-                  <h3>Types</h3>
-                  {pokemonEle.types.map((ele) => {
-                    return <h3>{ele.type.name}</h3>;
-                  })}
+            <Tilt>
+              <Link to={`/${pokemonEle.name}`}>
+                <div className="container link">
+                  <h1 className="link">{pokemonEle.name}</h1>
+                  <img
+                    src={pokemonEle.sprites.front_default}
+                    alt={pokemonEle.name}
+                  ></img>
+                  <div>
+                    <h3 className="link">Types</h3>
+                    {pokemonEle.types.map((ele) => {
+                      return <h3 className="link">{ele.type.name}</h3>;
+                    })}
+                  </div>
                 </div>
-              </div>
-            </Link>
+              </Link>
+            </Tilt>
           );
         })}
       </div>
