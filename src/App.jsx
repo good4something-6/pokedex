@@ -54,9 +54,14 @@ function App() {
       </div>
     );
   } else {
+    const pokemonPicked = location.pathname.slice(1);
+    const pokemonData = pokemon.filter((ele) => {
+      return ele.name === pokemonPicked;
+    })[0];
+    console.log(pokemonData);
     return (
       <div>
-        <h1 className="title">{location.pathname.slice(1)}</h1>
+        <h1 className="title">{pokemonData.name}</h1>
       </div>
     );
   }
